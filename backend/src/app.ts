@@ -1,4 +1,4 @@
-// src/app.ts
+// backend/src/app.ts
 
 import 'dotenv/config'
 import express, { RequestHandler } from 'express'
@@ -24,8 +24,8 @@ import reportRoutes from './routes/reports'
 import { notFound } from './middleware/notFound'
 import { errorHandler } from './middleware/errorHandler'
 
-// Import xss-clean using require
-const xss: () => RequestHandler = require('xss-clean')
+// Import xss-clean as RequestHandler
+const xssClean: RequestHandler = require('xss-clean')
 
 const app = express()
 
@@ -37,8 +37,8 @@ app.use(express.json({ limit: '10mb' }))
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(mongoSanitize())
-// Now xss() is correctly typed as RequestHandler
-app.use(xss())
+// Use xss-clean middleware
+app.use(xssClean)
 app.use(hpp())
 app.use(compression())
 app.use(morgan('dev'))
