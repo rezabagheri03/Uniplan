@@ -1,0 +1,77 @@
+:root {
+    --primary-color: #0052cc;
+    --secondary-color: #ffffff;
+    --bg-light: #f0f2f5;
+    --bg-dark: #1f1f1f;
+    --text-light: #333333;
+    --text-dark: #eeeeee;
+    --border-radius: 12px;
+}
+
+[data-theme="dark"] {
+    --secondary-color: #1f1f1f;
+    --bg-light: #121212;
+    --bg-dark: #000000;
+    --text-light: #eeeeee;
+    --text-dark: #bbbbbb;
+}
+
+body {
+    direction: rtl;
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: background-color .3s, color .3s;
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: var(--secondary-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.course-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: var(--border-radius);
+    transition: background .3s, border-color .3s;
+}
+.course-card:hover {
+    background: #e6f0ff;
+    border-color: var(--primary-color);
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+.schedule-table th,
+.schedule-table td {
+    border: 1px solid #ccc;
+    padding: 0.75rem;
+    text-align: center;
+}
+.schedule-table th {
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+.button-link {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    background: var(--primary-color);
+    color: #fff;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.button-link:hover {
+    background: #0041a3;
+}
