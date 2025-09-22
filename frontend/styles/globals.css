@@ -1,14 +1,260 @@
-html, body {
-    padding: 0;
-    margin: 0;
-    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css');
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/iran-yekan@v3.0.0/WebFonts/fonts.css');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Persian Font Setup */
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('https://cdn.jsdelivr.net/gh/rastikerdar/iran-yekan@v3.0.0/WebFonts/fonts/woff2/IRANYekanWebRegular.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/rastikerdar/iran-yekan@v3.0.0/WebFonts/fonts/woff/IRANYekanWebRegular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
 }
-a {
-    color: #0070f3;
-    text-decoration: none;
+
+@font-face {
+    font-family: 'IRANYekan';
+    src: url('https://cdn.jsdelivr.net/gh/rastikerdar/iran-yekan@v3.0.0/WebFonts/fonts/woff2/IRANYekanWebBold.woff2') format('woff2'),
+    url('https://cdn.jsdelivr.net/gh/rastikerdar/iran-yekan@v3.0.0/WebFonts/fonts/woff/IRANYekanWebBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
 }
+
+/* Global Reset */
 * {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* Root Setup */
+html {
+    direction: rtl;
+    font-family: 'IRANYekan', 'Vazir', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(
+            to bottom,
+            transparent,
+            rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+    font-feature-settings: 'kern' 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* CSS Variables */
+:root {
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+
+    /* Custom Colors */
+    --primary-50: 240, 249, 255;
+    --primary-100: 224, 242, 254;
+    --primary-200: 186, 230, 253;
+    --primary-300: 125, 211, 252;
+    --primary-400: 56, 189, 248;
+    --primary-500: 14, 165, 233;
+    --primary-600: 2, 132, 199;
+    --primary-700: 3, 105, 161;
+    --primary-800: 7, 89, 133;
+    --primary-900: 12, 74, 110;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+/* Utility Classes */
+.persian-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.glass-effect {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.dark .glass-effect {
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+}
+
+.persian-shadow {
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.hover-scale {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.persian-card {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: 20px;
+    box-shadow: 20px 20px 40px #d1d1d1, -20px -20px 40px #ffffff;
+}
+
+.dark .persian-card {
+    background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
+    box-shadow: 20px 20px 40px #0f0f0f, -20px -20px 40px #3f3f3f;
+}
+
+.text-gradient {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #374151;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(45deg, #5a67d8, #6b46c1);
+}
+
+/* Selection */
+::selection {
+    background: rgba(102, 126, 234, 0.3);
+    color: inherit;
+}
+
+/* Animation Classes */
+.animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-in-right {
+    animation: slideInRight 0.7s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* RTL Support */
+.direction-rtl {
+    direction: rtl;
+}
+
+.direction-ltr {
+    direction: ltr;
+}
+
+/* Form Enhancements */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    font-family: inherit;
+    direction: rtl;
+}
+
+input[type="email"] {
+    direction: ltr;
+}
+
+/* Line Clamping */
+.line-clamp-1 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+.line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Dark Mode Transitions */
+* {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }

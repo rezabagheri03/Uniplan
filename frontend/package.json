@@ -1,28 +1,125 @@
 {
-  "name": "uniplan-frontend",
+  "name": "persian-website",
   "version": "1.0.0",
   "private": true,
+  "description": "مدرن‌ترین وب‌سایت آموزشی فارسی با بهترین تجربه کاربری",
+  "author": "Persian Education Team",
+  "license": "MIT",
+  "keywords": [
+    "persian",
+    "farsi",
+    "rtl",
+    "education",
+    "nextjs",
+    "react",
+    "tailwind",
+    "framer-motion",
+    "modern-ui"
+  ],
+  "homepage": "https://persian-education.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/persian-education/website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/persian-education/website/issues"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint --fix",
+    "lint:check": "next lint",
+    "type-check": "tsc --noEmit",
+    "build-stats": "cross-env ANALYZE=true npm run build",
+    "export": "next export",
+    "clean": "rimraf .next out dist build",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "prepare": "husky install",
+    "check-updates": "ncu",
+    "update-deps": "ncu -u && npm install"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.8.0",
-    "@emotion/react": "^11.11.0",
-    "@emotion/styled": "^11.11.0",
-    "framer-motion": "^10.12.16",
-    "next": "^14.2.32",
+    "next": "^14.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "axios": "^1.4.0"
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.4",
+    "@types/react": "^18.2.45",
+    "@types/react-dom": "^18.2.18",
+    "framer-motion": "^10.16.16",
+    "tailwindcss": "^3.3.6",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32",
+    "axios": "^1.6.2",
+    "react-hook-form": "^7.48.2",
+    "@hookform/resolvers": "^3.3.2",
+    "yup": "^1.4.0",
+    "react-hot-toast": "^2.4.1",
+    "lucide-react": "^0.294.0",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-tooltip": "^1.0.7",
+    "@radix-ui/react-switch": "^1.0.3",
+    "clsx": "^2.0.0",
+    "tailwind-merge": "^2.2.0",
+    "class-variance-authority": "^0.7.0",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/aspect-ratio": "^0.4.2"
   },
   "devDependencies": {
-    "@types/node": "^20.1.7",
-    "@types/react": "^18.0.38",
-    "eslint": "^8.47.0",
-    "eslint-config-next": "^14.2.0",
-    "typescript": "^5.2.2"
+    "eslint": "^8.55.0",
+    "eslint-config-next": "^14.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.9",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "cross-env": "^7.0.3",
+    "rimraf": "^5.0.5",
+    "npm-check-updates": "^16.14.12",
+    "@next/bundle-analyzer": "^14.0.4",
+    "jest": "^29.7.0",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/jest-dom": "^6.1.5",
+    "jest-environment-jsdom": "^29.7.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,scss,md}": [
+      "prettier --write"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "resolutions": {
+    "@types/react": "^18.2.45"
   }
 }
