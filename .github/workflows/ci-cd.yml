@@ -32,13 +32,24 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install dependencies
+      - name: Install backend dependencies
+        working-directory: ./backend
         run: npm ci
 
-      - name: Build TypeScript
+      - name: Build backend
+        working-directory: ./backend
         run: npm run build
 
-      - name: Run tests
+      - name: Install frontend dependencies
+        working-directory: ./frontend
+        run: npm ci
+
+      - name: Build frontend
+        working-directory: ./frontend
+        run: npm run build
+
+      - name: Run backend tests
+        working-directory: ./backend
         env:
           MONGO_URI: mongodb://localhost:27017/university
         run: npm test
