@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:6.0
+    container_name: scheduling-mongodb
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password123
+      MONGO_INITDB_DATABASE: scheduling
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - scheduling-network
+
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: scheduling-backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      MONGODB_URI: mongodb://admin:password123@mongodb:27017/scheduling?authSource=admin
+      JWT_SECRET: your-super-secret-jwt-key
+      FRONTEND_URL: http://localhost:3000
+    depends_on:
+      - mongodb
+    networks:
+      - scheduling-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: scheduling-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:5000
+      NEXT_PUBLIC_APP_NAME: سیستم برنامه‌ریزی دروس
+    depends_on:
+      - backend
+    networks:
+      - scheduling-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  scheduling-network:
+    driver: bridge
